@@ -1,0 +1,58 @@
+# Usuarios API
+
+Esta API foi desenvolvida para gerenciar o cadastro e autenticação de usuários, utilizando autenticação baseada em **JWT (JSON Web Token)** e **ASP.NET Core Identity**. A aplicação também implementa uma política de autorização personalizada, onde apenas usuários com uma idade mínima podem acessar determinados recursos.
+
+## Tecnologias Utilizadas
+
+- **ASP.NET Core 6+**: Framework utilizado para desenvolver a API.
+- **JWT (JSON Web Token)**: Mecanismo de autenticação utilizado para validar requisições.
+- **ASP.NET Core Identity**: Sistema de gerenciamento de identidade e usuários.
+- **MySQL**: Banco de dados utilizado para armazenar os dados dos usuários.
+- **AutoMapper**: Para facilitar o mapeamento entre os DTOs e as entidades.
+- **Swagger**: Utilizado para documentação e testes da API.
+
+## Funcionalidades
+
+- Cadastro de usuários com validação de senha.
+- Login de usuários com autenticação JWT.
+- Autorização de acesso baseada na idade mínima (18 anos).
+- Armazenamento de dados de usuários com **DataNascimento** (data de nascimento).
+- Geração de tokens JWT para autenticação.
+
+## Estrutura do Projeto
+
+- **Controllers**
+  - `UsuarioController.cs`: Controlador para operações de cadastro e login de usuários.
+  - `AcessoController.cs`: Controlador com uma rota protegida que exige que o usuário tenha, no mínimo, 18 anos.
+
+- **Data**
+  - `Dtos`: Contém os DTOs (Data Transfer Objects) usados para enviar dados entre as camadas da API.
+  - `UsuarioDbContext.cs`: Contexto do banco de dados para interação com o MySQL.
+
+- **Models**
+  - `Usuario.cs`: Modelo de usuário que herda de `IdentityUser` e adiciona um campo `DataNascimento`.
+
+- **Services**
+  - `TokenService.cs`: Serviço para gerar tokens JWT para autenticação.
+  - `UsuarioService.cs`: Serviço para realizar operações de cadastro e login de usuários.
+
+- **Authorization**
+  - `IdadeAuthorization.cs`: Handler de autorização personalizado que verifica se o usuário tem a idade mínima necessária.
+
+- **Profiles**
+  - `UsuarioProfile.cs`: Configuração do AutoMapper para mapear DTOs para o modelo de usuário.
+
+## Como Rodar o Projeto
+
+### Pré-requisitos
+
+- **.NET 6+**: Certifique-se de ter o **.NET SDK 6** ou superior instalado.
+- **MySQL**: Banco de dados configurado para persistência de dados.
+
+### Passos para Configuração
+
+1. **Clone o Repositório**:
+
+   ```bash
+   git clone https://github.com/seu-usuario/usuarios-api.git
+   cd usuarios-api
