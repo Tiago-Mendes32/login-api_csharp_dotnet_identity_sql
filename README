@@ -48,11 +48,3 @@ Esta API foi desenvolvida para gerenciar o cadastro e autenticação de usuário
 
 - **.NET 6+**: Certifique-se de ter o **.NET SDK 6** ou superior instalado.
 - **MySQL**: Banco de dados configurado para persistência de dados.
-
-### Passos para Configuração
-
-1. **Clone o Repositório**:
-
-   ```bash
-   git clone https://github.com/seu-usuario/usuarios-api.git
-   cd usuarios-api
